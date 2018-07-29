@@ -1,0 +1,19 @@
+{
+  "name": "sol-ts-generator",
+  "version": "1.0.0",
+  "description": "Generate typescript type definitions from Ethereum smart contracts ABI that will allow you to write static typed Typescript tests in your Truffle projects",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EdsonAlcala/sol-ts-generator.git"
+  },
+  "keywords": [
+    "solidity",
+    "typescript"
+  ],
+  "author": "Edson Alcala",
+  "license": "MIT"
+}
