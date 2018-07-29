@@ -1,2 +1,3 @@
-# sol-ts-generator
+# ABI to Typescript type definition generator
+
 Generate typescript type definitions from Ethereum smart contracts ABI that will allow you to write static typed Typescript tests in your Truffle projects
