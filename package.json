@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Generate typescript type definitions from Ethereum smart contracts ABI that will allow you to write static typed Typescript tests in your Truffle projects",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "publish": "npm test && npm build",
