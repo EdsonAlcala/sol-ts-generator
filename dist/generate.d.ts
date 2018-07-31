@@ -1,4 +1,3 @@
-declare class Generate {
-    hello(): string;
-}
-export default Generate;
+import { IOptions } from "./parseArgs";
+declare const generate: (options: IOptions) => Promise<void>;
+export default generate;

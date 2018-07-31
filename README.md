@@ -27,3 +27,14 @@ npm init
 npm addUser
 npm publish
 npm version patch // we should version manually or with this command
+
+// config where we specify the folder where the contracts are located
+// path has to be diferent
+// this thing should write to disk
+
+// Typechain algorithm
+// Get all files
+// parse
+// generate
+// write
+// prettier

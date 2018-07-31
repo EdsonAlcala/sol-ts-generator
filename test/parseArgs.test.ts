@@ -1,4 +1,4 @@
-import generate from "../src/generate";
+import { parseArgs } from "../src/parseArgs";
 
 describe("generate component", () => {
   it("should return true for the moment", () => {
