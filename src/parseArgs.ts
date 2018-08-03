@@ -1,25 +1,19 @@
 import commandLineArgs from "command-line-args";
 
-const DEFAULT_GLOB_PATTERN = "../build/contracts/*.json";
+const DEFAULT_GLOB_PATTERN = "./build/contracts/*.json";
 
-export interface IOptions {
+export interface Options {
   glob: string;
   outDir: string;
 }
 
-const args = process.argv;
-console.log("Arguments", args);
-console.log("Dirname", __dirname);
-
-export const parseArgs = (): IOptions => {
+export const parseArgs = (): Options => {
   const optionDefinitions = [
     { name: "glob", type: String, defaultOption: true },
     { name: "outDir", type: String }
   ];
 
   const rawOptions = commandLineArgs(optionDefinitions);
-
-  console.log(rawOptions);
 
   return {
     glob: rawOptions.glob || DEFAULT_GLOB_PATTERN,
