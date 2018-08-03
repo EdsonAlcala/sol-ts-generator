@@ -5,8 +5,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest",
-    "generate-ts-types": "sol-ts-generator --folder ./build",
+    "test": "jest --watch",
+    "generate-ts-types": "sol-ts-generator --folder ./build --outdir ./types",
     "publish": "npm test && npm build",
     "build": "tsc",
     "publish-please": "publish-please",
@@ -26,6 +26,7 @@
     "@types/command-line-args": "^5.0.0",
     "@types/glob": "^5.0.35",
     "@types/jest": "^23.3.1",
+    "@types/node": "^10.5.4",
     "jest": "^23.4.2",
     "ts-jest": "^23.0.1",
     "tslint": "^5.11.0",
