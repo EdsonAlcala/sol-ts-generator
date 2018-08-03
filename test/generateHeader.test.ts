@@ -11,27 +11,28 @@ describe("Generate component", () => {
         type UInt = number | BigNumber.BigNumber;
 
         interface Transaction {
-        hash: string;
-        nonce: number;
-        blockHash: string | null;
-        blockNumber: number | null;
-        transactionIndex: number | null;
-        from: Address | ContractInstance;
-        to: string | null;
-        value: UInt;
-        gasPrice: UInt;
-        gas: number;
-        input: string;
+            hash: string;
+            nonce: number;
+            blockHash: string | null;
+            blockNumber: number | null;
+            transactionIndex: number | null;
+            from: Address | ContractInstance;
+            to: string | null;
+            value: UInt;
+            gasPrice: UInt;
+            gas: number;
+            input: string;
         }
 
         interface ContractInstance {
-        address: string;
-        sendTransaction(options?: TransactionOptions): Promise<void>;
-        }
-    `;
+            address: string;
+            sendTransaction(options?: TransactionOptions): Promise<void>;
+        }`;
 
     const result = generateHeader();
 
-    expect(result).toBe(expectedResult);
+    expect(result.replace(/\s/g, "")).toEqual(
+      expectedResult.replace(/\s/g, "")
+    );
   });
 });
