@@ -1,16 +1,12 @@
 {
   "name": "sol-ts-generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Generate typescript type definitions from Ethereum smart contracts ABI that will allow you to write static typed Typescript tests in your Truffle projects",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest --watch",
-    "generate-ts-types": "sol-ts-generator --folder ./build --outdir ./types",
-    "publish": "npm test && npm build",
-    "build": "tsc",
-    "publish-please": "publish-please",
-    "prepublishOnly": "publish-please guard"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
@@ -27,14 +23,15 @@
     "@types/glob": "^5.0.35",
     "@types/jest": "^23.3.1",
     "@types/node": "^10.5.4",
+    "@types/prettier": "^1.13.2",
     "jest": "^23.4.2",
+    "prettier": "^1.14.0",
     "ts-jest": "^23.0.1",
     "tslint": "^5.11.0",
-    "typescript": "^2.9.2"
+    "typescript": "^3.0.1"
   },
   "dependencies": {
-    "command-line-args": "^5.0.2",
-    "publish-please": "^3.2.0"
+    "command-line-args": "^5.0.2"
   },
   "jest": {
     "testURL": "http://localhost",
