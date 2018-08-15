@@ -1,4 +1,4 @@
-import { parseArgs, Options } from "../src/parseArgs";
+import { parseArgs, Options } from "../lib/parseArgs";
 
 describe("parseArgs test", () => {
   it("should parse arguments correctly", () => {
@@ -6,7 +6,7 @@ describe("parseArgs test", () => {
     const outDir = "./types";
     const expectedResult: Options = {
       glob: globPattern,
-      outDir: outDir
+      outDir: outDir,
     };
     process.argv.push("--glob", globPattern);
     process.argv.push("--outDir", outDir);

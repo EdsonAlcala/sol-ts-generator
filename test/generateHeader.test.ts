@@ -1,4 +1,4 @@
-import generateHeader from "../src/generateHeader";
+import generateHeader from "../lib/generateHeader";
 
 describe("Generate component", () => {
   it("should return header correctly", () => {
@@ -31,8 +31,6 @@ describe("Generate component", () => {
 
     const result = generateHeader();
 
-    expect(result.replace(/\s/g, "")).toEqual(
-      expectedResult.replace(/\s/g, "")
-    );
+    expect(result.replace(/\s/g, "")).toEqual(expectedResult.replace(/\s/g, ""));
   });
 });

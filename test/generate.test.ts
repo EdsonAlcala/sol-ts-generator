@@ -1,7 +1,15 @@
-import generate from "../src/generate";
+import generate from "../lib/generate";
+import { Options } from "../lib/parseArgs";
 
 describe("generate component", () => {
-  it("should return true for the moment", () => {
-    expect(true).toBe(true);
+  it("should return type definition generated", async () => {
+    const options: Options = {
+      glob: "",
+      outDir: "",
+    };
+
+    const result = await generate(options);
+
+    expect(result).toBeTruthy();
   });
 });
