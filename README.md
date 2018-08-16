@@ -10,11 +10,20 @@ I decided to turn those ideas into a simple package
 
 # Install
 
+> npm install sol-ts-generator
+
 # Options
 
-You can specify options
+```
+Usage: sol-ts-generator [options]
 
-By default the type generated is going to be here..
-But you can define your own route...
+Options:
+   --outDir, output directory to write the type definitions; default is "./types" folder root directory  [string]
+   --glob, String (glob pattern) to get existing abi code; default is "./build/contracts/*.json" [string]
+```
 
 # Commands
+
+> npm test
+
+> npm run build
