@@ -18,8 +18,8 @@ I decided to turn those ideas into a simple package
 Usage: sol-ts-generator [options]
 
 Options:
-   --outDir, output directory to write the type definitions; default is "./types" folder root directory  [string]
-   --glob, String (glob pattern) to get existing abi code; default is "./build/contracts/*.json" [string]
+   --outDir, output directory to write the type definitions; default is "./types" [string]
+   --glob, pattern to get existing abi code; default is "./build/contracts/*.json" [string]
 ```
 
 # Commands
