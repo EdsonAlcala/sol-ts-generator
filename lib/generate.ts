@@ -11,7 +11,7 @@ const generate = async (options: Options): Promise<string> => {
   const files = await globPromise(options.glob);
   let result: string = generateHeader();
   files.forEach(file => {
-    const filePath = path.join("..", file);
+    const filePath = require.main === undefined ? file : path.join("../../..", file);
 
     let definition: Definition = require(filePath);
 
