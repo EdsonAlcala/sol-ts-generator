@@ -77,16 +77,61 @@ const uintTypes = tuple(
 
 type SolidityUintType = typeof uintTypes[number];
 
+const uintArrayTypes = tuple(
+  "uint8[]",
+  "uint16[]",
+  "uint24[]",
+  "uint32[]",
+  "uint40[]",
+  "uint48[]",
+  "uint56[]",
+  "uint64[]",
+  "uint72[]",
+  "uint80[]",
+  "uint88[]",
+  "uint96[]",
+  "uint104[]",
+  "uint112[]",
+  "uint120[]",
+  "uint128[]",
+  "uint136[]",
+  "uint144[]",
+  "uint152[]",
+  "uint160[]",
+  "uint168[]",
+  "uint176[]",
+  "uint184[]",
+  "uint192[]",
+  "uint200[]",
+  "uint208[]",
+  "uint216[]",
+  "uint224[]",
+  "uint232[]",
+  "uint240[]",
+  "uint248[]",
+  "uint256[]",
+);
+
+type SolidityUintArrayType = typeof uintArrayTypes[number];
+
 export type SolidityType =
   | "address"
   | "address[]"
   | "bool"
   | "string"
-  | "uint256[]"
+  | SolidityUintArrayType
   | SolidityBytesType
   | SolidityUintType;
 
-export type JSType = "string" | "uint" | "Address" | "Address[]" | "boolean";
+export type JSType =
+  | "string"
+  | "Uint"
+  | "Uint[]"
+  | "Address"
+  | "Address[]"
+  | "boolean"
+  | "BigNumber.BigNumber[]"
+  | "BigNumber.BigNumber";
 
 interface Mapping {
   solidityType: SolidityType | SolidityType[];
@@ -97,10 +142,6 @@ const mappings: Mapping[] = [
   {
     solidityType: bytesTypes,
     jsType: "string",
-  },
-  {
-    solidityType: uintTypes,
-    jsType: "uint",
   },
   {
     solidityType: "string",
@@ -120,8 +161,41 @@ const mappings: Mapping[] = [
   },
 ];
 
+const inputMappings: Mapping[] = [
+  ...mappings,
+  {
+    solidityType: uintTypes,
+    jsType: "Uint",
+  },
+  {
+    solidityType: uintArrayTypes,
+    jsType: "Uint[]",
+  },
+];
+
+const outputMappings: Mapping[] = [
+  ...mappings,
+  {
+    solidityType: uintTypes,
+    jsType: "BigNumber.BigNumber",
+  },
+  {
+    solidityType: uintArrayTypes,
+    jsType: "BigNumber.BigNumber[]",
+  },
+];
+
 export const getMappings = (): Map<SolidityType, JSType> => {
-  const allMappings: Mapping[] = mappings;
+  const allMappings: Mapping[] = inputMappings;
+  return mapper(allMappings);
+};
+
+export const getOutputMappings = (): Map<SolidityType, JSType> => {
+  const allMappings: Mapping[] = outputMappings;
+  return mapper(allMappings);
+};
+
+const mapper = (allMappings: Mapping[]): Map<SolidityType, JSType> => {
   let result = new Map<SolidityType, JSType>();
   allMappings.forEach(s => {
     if (s.solidityType instanceof Array) {

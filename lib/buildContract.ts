@@ -1,9 +1,10 @@
 import { Member, FunctionMemberInput, FunctionMember, Abi, Definition } from "./types";
 
 import { SolidityType } from "./solidityTypes";
-import { getMappings } from "./solidityTypes";
+import { getMappings, getOutputMappings } from "./solidityTypes";
 
 const mappings = getMappings();
+const outputMappings = getOutputMappings();
 
 export const buildContract = (definition: Definition): string => {
   return `
@@ -58,7 +59,7 @@ export const translateOutputs = (outputs: FunctionMemberInput[]): string => {
 };
 
 export const translateOutput = (output: FunctionMemberInput): string => {
-  return translateType(output.type, { UInt: "BigNumber.BigNumber" });
+  return translateType(output.type, true);
 };
 
 let unnamedArgumentNumber = 0;
@@ -81,13 +82,10 @@ export const buildFunctionArgument = (input: FunctionMemberInput): string => {
   return `${name}: ${type}`;
 };
 
-export const translateType = (type: SolidityType, options = { UInt: "UInt" }): string => {
-  const result = mappings.get(type);
+export const translateType = (type: SolidityType, isOutput: boolean = false): string => {
+  const result = isOutput ? outputMappings.get(type) : mappings.get(type);
   if (!result) {
     throw `Unexpected case! ${type}`;
-  }
-  if (type == "uint256[]") {
-    return `${options.UInt}[]`;
   }
   return result;
 };
