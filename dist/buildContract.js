@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var solidityTypes_1 = require("./solidityTypes");
 var mappings = solidityTypes_1.getMappings();
+var outputMappings = solidityTypes_1.getOutputMappings();
 exports.buildContract = function (definition) {
     return "\n        export interface " + definition.contractName + "Instance extends ContractInstance {\n          " + exports.buildMembers(definition.abi) + "\n        }\n      ";
 };
@@ -43,7 +44,7 @@ exports.translateOutputs = function (outputs) {
     return "Promise<" + valueType + ">";
 };
 exports.translateOutput = function (output) {
-    return exports.translateType(output.type, { UInt: "BigNumber.BigNumber" });
+    return exports.translateType(output.type, true);
 };
 var unnamedArgumentNumber = 0;
 exports.unnamedArgumentName = function () {
@@ -60,14 +61,11 @@ exports.buildFunctionArgument = function (input) {
     }
     return name + ": " + type;
 };
-exports.translateType = function (type, options) {
-    if (options === void 0) { options = { UInt: "UInt" }; }
-    var result = mappings.get(type);
+exports.translateType = function (type, isOutput) {
+    if (isOutput === void 0) { isOutput = false; }
+    var result = isOutput ? outputMappings.get(type) : mappings.get(type);
     if (!result) {
         throw "Unexpected case! " + type;
-    }
-    if (type == "uint256[]") {
-        return options.UInt + "[]";
     }
     return result;
 };

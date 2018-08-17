@@ -8,9 +8,7 @@ export declare const translateOutputs: (outputs: FunctionMemberInput[]) => strin
 export declare const translateOutput: (output: FunctionMemberInput) => string;
 export declare const unnamedArgumentName: () => string;
 export declare const buildFunctionArgument: (input: FunctionMemberInput) => string;
-export declare const translateType: (type: SolidityType, options?: {
-    UInt: string;
-}) => string;
+export declare const translateType: (type: SolidityType, isOutput?: boolean) => string;
 export declare const buildEventMember: (_member: Member) => string;
 export declare const buildConstructorMember: (_member: Member) => string;
 export declare const buildFallbackMember: (_member: Member) => string;

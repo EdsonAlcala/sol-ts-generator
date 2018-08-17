@@ -9,11 +9,11 @@ describe("solidityTypes component", () => {
     expect(mappings.get("bytes2")).toBe("string");
     expect(mappings.get("bytes32")).toBe("string");
 
-    expect(mappings.get("uint8")).toBe("Uint");
-    expect(mappings.get("uint256")).toBe("Uint");
+    expect(mappings.get("uint8")).toBe("UInt");
+    expect(mappings.get("uint256")).toBe("UInt");
 
-    expect(mappings.get("uint8[]")).toBe("Uint[]");
-    expect(mappings.get("uint256[]")).toBe("Uint[]");
+    expect(mappings.get("uint8[]")).toBe("UInt[]");
+    expect(mappings.get("uint256[]")).toBe("UInt[]");
 
     expect(mappings.get("string")).toBe("string");
 

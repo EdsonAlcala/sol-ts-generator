@@ -52,7 +52,7 @@ var generate = function (options) { return __awaiter(_this, void 0, void 0, func
                 files = _a.sent();
                 result = generateHeader_1.default();
                 files.forEach(function (file) {
-                    var filePath = require.main === undefined ? file : path_1.default.join("../../..", file);
+                    var filePath = path_1.default.join(process.cwd(), file);
                     var definition = require(filePath);
                     result += buildContract_1.buildContract(definition);
                 });
