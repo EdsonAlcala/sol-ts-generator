@@ -125,8 +125,8 @@ export type SolidityType =
 
 export type JSType =
   | "string"
-  | "Uint"
-  | "Uint[]"
+  | "UInt"
+  | "UInt[]"
   | "Address"
   | "Address[]"
   | "boolean"
@@ -165,11 +165,11 @@ const inputMappings: Mapping[] = [
   ...mappings,
   {
     solidityType: uintTypes,
-    jsType: "Uint",
+    jsType: "UInt",
   },
   {
     solidityType: uintArrayTypes,
-    jsType: "Uint[]",
+    jsType: "UInt[]",
   },
 ];
 
