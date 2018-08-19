@@ -8,6 +8,7 @@ Inspired by the amazing work of [Bloom](https://blog.hellobloom.io/how-typescrip
 
 I decided to turn those ideas into a simple package
 
+For a sample project check [this boilerplate](https://github.com/EdsonAlcala/truffle-ts-boilerplate)
 ### Install
 
 > npm install sol-ts-generator
