@@ -65,6 +65,16 @@ exports.translateType = function (type, isOutput) {
     if (isOutput === void 0) { isOutput = false; }
     var result = isOutput ? outputMappings.get(type) : mappings.get(type);
     if (!result) {
+        var regex = new RegExp(/address\[(2[0-5][0-6]|1[0-9][0-9]|[1-9]?[0-9])]/i);
+        if (regex.test(type.toString())) {
+            var result_1 = isOutput
+                ? "Address[]"
+                : (function () {
+                    var number = Number(type.match(/\d/g).join(""));
+                    return "Address[" + number + "]";
+                })();
+            return result_1;
+        }
         throw "Unexpected case! " + type;
     }
     return result;
