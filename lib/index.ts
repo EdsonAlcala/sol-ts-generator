@@ -8,13 +8,17 @@ import path from "path";
 import fs from "fs";
 
 const main = async (): Promise<void> => {
-  const options = parseArgs();
-  const generatedTypes = await generate(options);
-  const prettierTypes = prettier.format(generatedTypes, { parser: "babylon" });
-  if (!fs.existsSync(options.outDir)) {
-    fs.mkdirSync(options.outDir);
+  try {
+    const options = parseArgs();
+    const generatedTypes = await generate(options);
+    const prettierTypes = prettier.format(generatedTypes, { parser: "babylon" });
+    if (!fs.existsSync(options.outDir)) {
+      fs.mkdirSync(options.outDir);
+    }
+    writeFileSync(path.join(options.outDir, "contracts.d.ts"), prettierTypes);
+  } catch (error) {
+    console.log(error);
   }
-  writeFileSync(path.join(options.outDir, "contracts.d.ts"), prettierTypes);
 };
 
 main()

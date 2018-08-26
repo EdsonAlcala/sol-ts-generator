@@ -85,6 +85,17 @@ export const buildFunctionArgument = (input: FunctionMemberInput): string => {
 export const translateType = (type: SolidityType, isOutput: boolean = false): string => {
   const result = isOutput ? outputMappings.get(type) : mappings.get(type);
   if (!result) {
+    const regex = new RegExp(/address\[(2[0-5][0-6]|1[0-9][0-9]|[1-9]?[0-9])]/i);
+    if (regex.test(type.toString())) {
+      const result = isOutput
+        ? `Address[]`
+        : (() => {
+            const number = Number(type.match(/\d/g)!.join(""));
+            return `Address[${number}]`;
+          })();
+      return result;
+    }
+
     throw `Unexpected case! ${type}`;
   }
   return result;
