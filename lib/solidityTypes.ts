@@ -114,6 +114,44 @@ const uintArrayTypes = tuple(
 
 type SolidityUintArrayType = typeof uintArrayTypes[number];
 
+const arrayBytesTypes = tuple(
+  "bytes[]",
+  "bytes1[]",
+  "bytes2[]",
+  "bytes3[]",
+  "bytes4[]",
+  "bytes5[]",
+  "bytes6[]",
+  "bytes7[]",
+  "bytes8[]",
+  "bytes9[]",
+  "bytes10[]",
+  "bytes11[]",
+  "bytes12[]",
+  "bytes13[]",
+  "bytes14[]",
+  "bytes15[]",
+  "bytes16[]",
+  "bytes17[]",
+  "bytes18[]",
+  "bytes19[]",
+  "bytes20[]",
+  "bytes21[]",
+  "bytes22[]",
+  "bytes23[]",
+  "bytes24[]",
+  "bytes25[]",
+  "bytes26[]",
+  "bytes27[]",
+  "bytes28[]",
+  "bytes29[]",
+  "bytes30[]",
+  "bytes31[]",
+  "bytes32[]",
+);
+
+type SolidityBytesArrayType = typeof arrayBytesTypes[number];
+
 export type SolidityType =
   | "address"
   | "address[]"
@@ -121,10 +159,12 @@ export type SolidityType =
   | "string"
   | SolidityUintArrayType
   | SolidityBytesType
-  | SolidityUintType;
+  | SolidityUintType
+  | SolidityBytesArrayType;
 
 export type JSType =
   | "string"
+  | "string[]"
   | "UInt"
   | "UInt[]"
   | "Address"
@@ -142,6 +182,10 @@ const mappings: Mapping[] = [
   {
     solidityType: bytesTypes,
     jsType: "string",
+  },
+  {
+    solidityType: arrayBytesTypes,
+    jsType: "string[]",
   },
   {
     solidityType: "string",
