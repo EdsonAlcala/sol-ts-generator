@@ -50,11 +50,11 @@ var inputMappings = mappings.concat([
 var outputMappings = mappings.concat([
     {
         solidityType: uintTypes,
-        jsType: "BigNumber.BigNumber",
+        jsType: "BigNumber",
     },
     {
         solidityType: uintArrayTypes,
-        jsType: "BigNumber.BigNumber[]",
+        jsType: "BigNumber[]",
     },
 ]);
 exports.getMappings = function () {
