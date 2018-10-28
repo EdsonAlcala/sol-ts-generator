@@ -1,14 +1,14 @@
 import generateHeader from "../lib/generateHeader";
 
 describe("Generate component", () => {
-  it("should return header correctly", () => {
-    const expectedResult = `
-        import * as Web3 from "web3";
-        import * as BigNumber from "bignumber.js";
-
+    it("should return header correctly", () => {
+        const expectedResult = `
+        import Web3 = require("web3");
+        import { BigNumber } from "bignumber.js";
+        
         type Address = string;
         type TransactionOptions = Partial<Transaction>;
-        type UInt = number | BigNumber.BigNumber;
+        type UInt = number | BigNumber;
 
         interface Transaction {
             hash: string;
@@ -29,8 +29,8 @@ describe("Generate component", () => {
             sendTransaction(options?: TransactionOptions): Promise<void>;
         }`;
 
-    const result = generateHeader();
+        const result = generateHeader();
 
-    expect(result.replace(/\s/g, "")).toEqual(expectedResult.replace(/\s/g, ""));
-  });
+        expect(result.replace(/\s/g, "")).toEqual(expectedResult.replace(/\s/g, ""));
+    });
 });

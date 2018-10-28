@@ -1,11 +1,12 @@
 const generateHeader: () => string = () => {
-  return `
-        import * as Web3 from "web3";
-        import * as BigNumber from "bignumber.js";
+    return `
+        import Web3 = require("web3");
+        import { BigNumber } from "bignumber.js";
+    
         
         type Address = string;
         type TransactionOptions = Partial<Transaction>;
-        type UInt = number | BigNumber.BigNumber;
+        type UInt = number | BigNumber;
 
         interface Transaction {
             hash: string;

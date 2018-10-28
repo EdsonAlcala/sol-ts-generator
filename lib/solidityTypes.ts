@@ -170,8 +170,8 @@ export type JSType =
   | "Address"
   | "Address[]"
   | "boolean"
-  | "BigNumber.BigNumber[]"
-  | "BigNumber.BigNumber";
+  | "BigNumber[]"
+  | "BigNumber";
 
 interface Mapping {
   solidityType: SolidityType | SolidityType[];
@@ -221,11 +221,11 @@ const outputMappings: Mapping[] = [
   ...mappings,
   {
     solidityType: uintTypes,
-    jsType: "BigNumber.BigNumber",
+    jsType: "BigNumber",
   },
   {
     solidityType: uintArrayTypes,
-    jsType: "BigNumber.BigNumber[]",
+    jsType: "BigNumber[]",
   },
 ];
 

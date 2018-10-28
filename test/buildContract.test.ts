@@ -1,4 +1,4 @@
-import { buildContract, translateType } from "../lib/buildContract";
+import { translateType } from "../lib/buildContract";
 
 describe("buildContract component", () => {
   describe("translateType()", () => {
