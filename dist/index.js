@@ -63,7 +63,7 @@ var main = function () { return __awaiter(_this, void 0, void 0, function () {
                 return [4 /*yield*/, generate_1.default(options)];
             case 1:
                 generatedTypes = _a.sent();
-                prettierTypes = prettier.format(generatedTypes, { parser: "babylon" });
+                prettierTypes = prettier.format(generatedTypes, { parser: "typescript" });
                 if (!fs_2.default.existsSync(options.outDir)) {
                     fs_2.default.mkdirSync(options.outDir);
                 }

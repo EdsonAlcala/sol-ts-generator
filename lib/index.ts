@@ -11,7 +11,7 @@ const main = async (): Promise<void> => {
   try {
     const options = parseArgs();
     const generatedTypes = await generate(options);
-    const prettierTypes = prettier.format(generatedTypes, { parser: "babylon" });
+    const prettierTypes = prettier.format(generatedTypes, { parser: "typescript" });
     if (!fs.existsSync(options.outDir)) {
       fs.mkdirSync(options.outDir);
     }
