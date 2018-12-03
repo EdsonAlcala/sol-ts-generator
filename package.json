@@ -1,5 +1,5 @@
 {
-  "name": "@komgo/sol-ts-generator",
+  "name": "sol-ts-generator",
   "version": "1.0.17",
   "description": "Generate typescript type definitions from Ethereum smart contracts ABI that will allow you to write static typed Typescript tests in your Truffle projects",
   "types": "dist/index.d.ts",
