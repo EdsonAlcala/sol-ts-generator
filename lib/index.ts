@@ -15,7 +15,10 @@ const main = async (): Promise<void> => {
     if (!fs.existsSync(options.outDir)) {
       fs.mkdirSync(options.outDir);
     }
-    writeFileSync(path.join(options.outDir, "contracts.d.ts"), prettierTypes);
+    if (!fs.existsSync(path.join(options.outDir, "contracts"))) {
+      fs.mkdirSync(path.join(options.outDir, "contracts"));
+    }
+    writeFileSync(path.join(options.outDir, "contracts/index.d.ts"), prettierTypes);
   } catch (error) {
     console.log(error);
   }

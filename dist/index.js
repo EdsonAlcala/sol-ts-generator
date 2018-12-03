@@ -67,7 +67,10 @@ var main = function () { return __awaiter(_this, void 0, void 0, function () {
                 if (!fs_2.default.existsSync(options.outDir)) {
                     fs_2.default.mkdirSync(options.outDir);
                 }
-                fs_1.writeFileSync(path_1.default.join(options.outDir, "contracts.d.ts"), prettierTypes);
+                if (!fs_2.default.existsSync(path_1.default.join(options.outDir, "contracts"))) {
+                    fs_2.default.mkdirSync(path_1.default.join(options.outDir, "contracts"));
+                }
+                fs_1.writeFileSync(path_1.default.join(options.outDir, "contracts/index.d.ts"), prettierTypes);
                 return [3 /*break*/, 3];
             case 2:
                 error_1 = _a.sent();
