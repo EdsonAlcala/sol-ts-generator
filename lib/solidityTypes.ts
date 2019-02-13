@@ -152,6 +152,80 @@ const arrayBytesTypes = tuple(
 
 type SolidityBytesArrayType = typeof arrayBytesTypes[number];
 
+const fixedArrayBytes32Types = tuple(
+  "bytes32[1]",
+  "bytes32[2]",
+  "bytes32[3]",
+  "bytes32[4]",
+  "bytes32[5]",
+  "bytes32[6]",
+  "bytes32[7]",
+  "bytes32[8]",
+  "bytes32[9]",
+  "bytes32[10]",
+  "bytes32[11]",
+  "bytes32[12]",
+  "bytes32[13]",
+  "bytes32[14]",
+  "bytes32[15]",
+  "bytes32[16]",
+  "bytes32[17]",
+  "bytes32[18]",
+  "bytes32[19]",
+  "bytes32[20]",
+  "bytes32[21]",
+  "bytes32[22]",
+  "bytes32[23]",
+  "bytes32[24]",
+  "bytes32[25]",
+  "bytes32[26]",
+  "bytes32[27]",
+  "bytes32[28]",
+  "bytes32[29]",
+  "bytes32[30]",
+  "bytes32[31]",
+  "bytes32[32]"
+);
+
+type SolidityBytes32ArrayType = typeof fixedArrayBytes32Types[number];
+
+const fixedArrayStringTypes = tuple(
+  "string[1]",
+  "string[2]",
+  "string[3]",
+  "string[4]",
+  "string[5]",
+  "string[6]",
+  "string[7]",
+  "string[8]",
+  "string[9]",
+  "string[10]",
+  "string[11]",
+  "string[12]",
+  "string[13]",
+  "string[14]",
+  "string[15]",
+  "string[16]",
+  "string[17]",
+  "string[18]",
+  "string[19]",
+  "string[20]",
+  "string[21]",
+  "string[22]",
+  "string[23]",
+  "string[24]",
+  "string[25]",
+  "string[26]",
+  "string[27]",
+  "string[28]",
+  "string[29]",
+  "string[30]",
+  "string[31]",
+  "string[32]"
+);
+
+type SolidityStringArrayType = typeof fixedArrayStringTypes[number];
+
 export type SolidityType =
   | "address"
   | "address[]"
@@ -160,7 +234,9 @@ export type SolidityType =
   | SolidityUintArrayType
   | SolidityBytesType
   | SolidityUintType
-  | SolidityBytesArrayType;
+  | SolidityBytesArrayType
+  | SolidityBytes32ArrayType
+  | SolidityStringArrayType;
 
 export type JSType =
   | "string"
@@ -171,7 +247,8 @@ export type JSType =
   | "Address[]"
   | "boolean"
   | "BigNumber[]"
-  | "BigNumber";
+  | "BigNumber"
+  | "string[]";
 
 interface Mapping {
   solidityType: SolidityType | SolidityType[];
@@ -185,7 +262,15 @@ const mappings: Mapping[] = [
   },
   {
     solidityType: arrayBytesTypes,
-    jsType: "string[]",
+    jsType: "string[]"
+  },
+  {
+    solidityType: fixedArrayBytes32Types,
+    jsType: "string[]"
+  },
+  {
+    solidityType: fixedArrayStringTypes,
+    jsType: "string[]"
   },
   {
     solidityType: "string",
@@ -252,3 +337,4 @@ const mapper = (allMappings: Mapping[]): Map<SolidityType, JSType> => {
   });
   return result;
 };
+

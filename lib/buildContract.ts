@@ -90,9 +90,9 @@ export const translateType = (type: SolidityType, isOutput: boolean = false): st
       const result = isOutput
         ? `Address[]`
         : (() => {
-            const number = Number(type.match(/\d/g)!.join(""));
-            return `Address[${number}]`;
-          })();
+          const number = Number(type.match(/\d/g)!.join(""));
+          return `Address[${number}]`;
+        })();
       return result;
     }
 
