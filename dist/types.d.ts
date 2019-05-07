@@ -1,29 +1,49 @@
 import { SolidityType } from "./solidityTypes";
 export interface ConstructorMember {
-    inputs: FunctionMemberInput[];
-    payable: false;
     type: "constructor";
-}
-export interface EventMember {
     inputs: FunctionMemberInput[];
-    name: string;
-    type: "event";
 }
 export interface FunctionMember {
-    inputs: FunctionMemberInput[];
-    outputs: FunctionMemberInput[];
-    name: string;
-    constant: boolean;
-    payable: boolean;
     type: "function";
+    name: string;
+    inputs: FunctionMemberInput[];
+    outputs: FunctionMemberOutput[];
+    stateMutability: StateMutability;
 }
 export interface FallbackMember {
     type: "fallback";
-    payable: boolean;
+}
+export interface EventMember {
+    type: "event";
+    name: string;
+    inputs: EventMemberInput[];
+    anonymous: boolean;
 }
 export interface FunctionMemberInput {
     name: string;
     type: SolidityType;
+    components: TupleType[];
+}
+export interface FunctionMemberOutput {
+    name: string;
+    type: SolidityType;
+    components: TupleType[];
+}
+export interface EventMemberInput {
+    name: string;
+    type: SolidityType;
+    components: TupleType[];
+    indexed: boolean;
+}
+export interface TupleType {
+    name: string;
+    type: SolidityType;
+    components: TupleType[];
+}
+export declare enum StateMutability {
+    pure = "pure",
+    view = "view",
+    nonpayable = "nonpayable"
 }
 export declare type Member = ConstructorMember | EventMember | FunctionMember | FallbackMember;
 export declare type Abi = (Member)[];

@@ -14,8 +14,6 @@ describe("utils tests", () => {
     });
 
     it("shouldn't find any file with a glob", async () => {
-      const fileName = path.basename(__filename);
-
       const files = await globPromise("anything", {
         cwd: path.resolve(__dirname),
       });

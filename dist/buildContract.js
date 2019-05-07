@@ -55,7 +55,7 @@ exports.buildFunctionArgument = function (input) {
     if (name[0] == "_") {
         name = name.slice(1);
     }
-    var type = exports.translateType(input.type);
+    var type = input.components ? exports.generateTupleType(input, exports.buildFunctionArgument) : exports.translateType(input.type);
     if (name.length === 0) {
         name = exports.unnamedArgumentName();
     }
@@ -78,6 +78,13 @@ exports.translateType = function (type, isOutput) {
         throw "Unexpected case! " + type;
     }
     return result;
+};
+exports.generateTupleType = function (tuple, generator) {
+    return ("{" +
+        tuple.components
+            .map(function (component) { return "" + generator(component); })
+            .join(", ") +
+        "}");
 };
 exports.buildEventMember = function (_member) {
     return "";

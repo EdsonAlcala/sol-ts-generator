@@ -6,7 +6,8 @@
   "bin": "dist/index.js",
   "scripts": {
     "test": "jest --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "test:index": "jest index.test.ts"
   },
   "repository": {
     "type": "git",

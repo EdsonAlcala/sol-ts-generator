@@ -236,6 +236,7 @@ export type SolidityType =
   | SolidityUintType
   | SolidityBytesArrayType
   | SolidityBytes32ArrayType
+  | "tuple"
   | SolidityStringArrayType;
 
 export type JSType =

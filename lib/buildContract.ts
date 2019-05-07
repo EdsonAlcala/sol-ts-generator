@@ -1,4 +1,4 @@
-import { Member, FunctionMemberInput, FunctionMember, Abi, Definition } from "./types";
+import { Member, FunctionMemberInput, FunctionMember, Abi, Definition, TupleType } from "./types";
 
 import { SolidityType } from "./solidityTypes";
 import { getMappings, getOutputMappings } from "./solidityTypes";
@@ -73,12 +73,11 @@ export const buildFunctionArgument = (input: FunctionMemberInput): string => {
   if (name[0] == "_") {
     name = name.slice(1);
   }
-  const type = translateType(input.type);
+  let type = input.components ? generateTupleType(input, buildFunctionArgument) : translateType(input.type);
 
   if (name.length === 0) {
     name = unnamedArgumentName();
   }
-
   return `${name}: ${type}`;
 };
 
@@ -100,6 +99,16 @@ export const translateType = (type: SolidityType, isOutput: boolean = false): st
   }
   return result;
 };
+
+export const generateTupleType = (tuple: TupleType, generator: (evmType: FunctionMemberInput) => string) => {
+  return (
+    "{" +
+    tuple.components
+      .map(component => `${generator(component)}`)
+      .join(", ") +
+    "}"
+  );
+}
 
 export const buildEventMember = (_member: Member): string => {
   return "";

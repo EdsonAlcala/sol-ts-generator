@@ -1,4 +1,4 @@
-import { Member, FunctionMemberInput, FunctionMember, Definition } from "./types";
+import { Member, FunctionMemberInput, FunctionMember, Definition, TupleType } from "./types";
 import { SolidityType } from "./solidityTypes";
 export declare const buildContract: (definition: Definition) => string;
 export declare const buildMembers: (abi: Member[]) => string;
@@ -9,6 +9,7 @@ export declare const translateOutput: (output: FunctionMemberInput) => string;
 export declare const unnamedArgumentName: () => string;
 export declare const buildFunctionArgument: (input: FunctionMemberInput) => string;
 export declare const translateType: (type: SolidityType, isOutput?: boolean) => string;
+export declare const generateTupleType: (tuple: TupleType, generator: (evmType: FunctionMemberInput) => string) => string;
 export declare const buildEventMember: (_member: Member) => string;
 export declare const buildConstructorMember: (_member: Member) => string;
 export declare const buildFallbackMember: (_member: Member) => string;

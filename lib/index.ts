@@ -7,9 +7,9 @@ import { writeFileSync } from "fs";
 import path from "path";
 import fs from "fs";
 
-const main = async (): Promise<void> => {
+export const main = async (optionsArgs?: any): Promise<void> => {
   try {
-    const options = parseArgs();
+    const options = optionsArgs || parseArgs();
     const generatedTypes = await generate(options);
     const prettierTypes = prettier.format(generatedTypes, { parser: "typescript" });
     if (!fs.existsSync(options.outDir)) {

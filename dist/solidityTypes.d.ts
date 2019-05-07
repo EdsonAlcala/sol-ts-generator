@@ -10,7 +10,7 @@ declare const fixedArrayBytes32Types: ("bytes32[1]" | "bytes32[2]" | "bytes32[3]
 declare type SolidityBytes32ArrayType = typeof fixedArrayBytes32Types[number];
 declare const fixedArrayStringTypes: ("string[1]" | "string[2]" | "string[3]" | "string[4]" | "string[5]" | "string[6]" | "string[7]" | "string[8]" | "string[9]" | "string[10]" | "string[11]" | "string[12]" | "string[13]" | "string[14]" | "string[15]" | "string[16]" | "string[17]" | "string[18]" | "string[19]" | "string[20]" | "string[21]" | "string[22]" | "string[23]" | "string[24]" | "string[25]" | "string[26]" | "string[27]" | "string[28]" | "string[29]" | "string[30]" | "string[31]" | "string[32]")[];
 declare type SolidityStringArrayType = typeof fixedArrayStringTypes[number];
-export declare type SolidityType = "address" | "address[]" | "bool" | "string" | SolidityUintArrayType | SolidityBytesType | SolidityUintType | SolidityBytesArrayType | SolidityBytes32ArrayType | SolidityStringArrayType;
+export declare type SolidityType = "address" | "address[]" | "bool" | "string" | SolidityUintArrayType | SolidityBytesType | SolidityUintType | SolidityBytesArrayType | SolidityBytes32ArrayType | "tuple" | SolidityStringArrayType;
 export declare type JSType = "string" | "string[]" | "UInt" | "UInt[]" | "Address" | "Address[]" | "boolean" | "BigNumber[]" | "BigNumber" | "string[]";
 export declare const getMappings: () => Map<SolidityType, JSType>;
 export declare const getOutputMappings: () => Map<SolidityType, JSType>;

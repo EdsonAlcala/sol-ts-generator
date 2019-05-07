@@ -53,13 +53,13 @@ var prettier = __importStar(require("prettier"));
 var fs_1 = require("fs");
 var path_1 = __importDefault(require("path"));
 var fs_2 = __importDefault(require("fs"));
-var main = function () { return __awaiter(_this, void 0, void 0, function () {
+exports.main = function (optionsArgs) { return __awaiter(_this, void 0, void 0, function () {
     var options, generatedTypes, prettierTypes, error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                options = parseArgs_1.parseArgs();
+                options = optionsArgs || parseArgs_1.parseArgs();
                 return [4 /*yield*/, generate_1.default(options)];
             case 1:
                 generatedTypes = _a.sent();
@@ -80,7 +80,7 @@ var main = function () { return __awaiter(_this, void 0, void 0, function () {
         }
     });
 }); };
-main()
+exports.main()
     .then(function () {
     console.log("Finished");
 })
