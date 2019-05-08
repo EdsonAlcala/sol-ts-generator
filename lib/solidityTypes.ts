@@ -242,8 +242,8 @@ export type SolidityType =
 export type JSType =
   | "string"
   | "string[]"
-  | "UInt"
-  | "UInt[]"
+  | "number"
+  | "number[]"
   | "Address"
   | "Address[]"
   | "boolean"
