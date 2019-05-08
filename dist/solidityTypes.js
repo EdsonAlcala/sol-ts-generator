@@ -50,11 +50,11 @@ var mappings = [
 var inputMappings = mappings.concat([
     {
         solidityType: uintTypes,
-        jsType: "UInt",
+        jsType: "number",
     },
     {
         solidityType: uintArrayTypes,
-        jsType: "UInt[]",
+        jsType: "number[]",
     },
 ]);
 var outputMappings = mappings.concat([

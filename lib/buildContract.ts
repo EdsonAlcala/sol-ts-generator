@@ -101,6 +101,15 @@ export const translateType = (type: SolidityType, isOutput: boolean = false): st
 };
 
 export const generateTupleType = (tuple: TupleType, generator: (evmType: FunctionMemberInput) => string) => {
+  if (tuple.type == "tuple[]") {
+    return (
+      "{" +
+      tuple.components
+        .map(component => `${generator(component)}`)
+        .join(", ") +
+      "}[]"
+    );
+  }
   return (
     "{" +
     tuple.components

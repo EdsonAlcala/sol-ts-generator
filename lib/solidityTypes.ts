@@ -237,6 +237,7 @@ export type SolidityType =
   | SolidityBytesArrayType
   | SolidityBytes32ArrayType
   | "tuple"
+  | "tuple[]"
   | SolidityStringArrayType;
 
 export type JSType =
@@ -295,11 +296,11 @@ const inputMappings: Mapping[] = [
   ...mappings,
   {
     solidityType: uintTypes,
-    jsType: "UInt",
+    jsType: "number",
   },
   {
     solidityType: uintArrayTypes,
-    jsType: "UInt[]",
+    jsType: "number[]",
   },
 ];
 

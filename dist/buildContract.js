@@ -80,6 +80,13 @@ exports.translateType = function (type, isOutput) {
     return result;
 };
 exports.generateTupleType = function (tuple, generator) {
+    if (tuple.type == "tuple[]") {
+        return ("{" +
+            tuple.components
+                .map(function (component) { return "" + generator(component); })
+                .join(", ") +
+            "}[]");
+    }
     return ("{" +
         tuple.components
             .map(function (component) { return "" + generator(component); })
