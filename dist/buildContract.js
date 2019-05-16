@@ -44,7 +44,7 @@ exports.translateOutputs = function (outputs) {
     return "Promise<" + valueType + ">";
 };
 exports.translateOutput = function (output) {
-    return exports.translateType(output.type, true);
+    return output.components ? "any" : exports.translateType(output.type, true);
 };
 var unnamedArgumentNumber = 0;
 exports.unnamedArgumentName = function () {
