@@ -25,7 +25,7 @@ interface ContractInstance {
 }
 export interface KomgoOnboarderInstance extends ContractInstance {
   companiesNodes(
-    unnamed0: number,
+    unnamed1: number,
     options?: TransactionOptions
   ): Promise<string>;
   owner(options?: TransactionOptions): Promise<Address>;
@@ -38,20 +38,18 @@ export interface KomgoOnboarderInstance extends ContractInstance {
     onboardInformation: {
       node: string;
       ethPubKeys: { publicKey: { x: string; y: string }; termDate: number };
-      textEntries: [{ key: string; value: string }];
-      booleanEntries: [{ key: string; value: boolean }];
+      textEntries: { key: string; value: string }[];
+      booleanEntries: { key: string; value: boolean }[];
     },
     options?: TransactionOptions
   ): Promise<boolean>;
   addCompaniesOnboardingInformation(
-    onboardInformation: [
-      {
-        node: string;
-        ethPubKeys: { publicKey: { x: string; y: string }; termDate: number };
-        textEntries: [{ key: string; value: string }];
-        booleanEntries: [{ key: string; value: boolean }];
-      }
-    ],
+    onboardInformation: {
+      node: string;
+      ethPubKeys: { publicKey: { x: string; y: string }; termDate: number };
+      textEntries: { key: string; value: string }[];
+      booleanEntries: { key: string; value: boolean }[];
+    }[],
     options?: TransactionOptions
   ): Promise<boolean>;
 }
