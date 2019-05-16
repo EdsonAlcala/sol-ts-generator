@@ -59,7 +59,7 @@ export const translateOutputs = (outputs: FunctionMemberInput[]): string => {
 };
 
 export const translateOutput = (output: FunctionMemberInput): string => {
-  return translateType(output.type, true);
+  return output.components ? "any" : translateType(output.type, true);
 };
 
 let unnamedArgumentNumber = 0;
