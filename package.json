@@ -1,6 +1,6 @@
 {
   "name": "sol-ts-generator",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Generate typescript type definitions from Ethereum smart contracts ABI that will allow you to write static typed Typescript tests in your Truffle projects",
   "types": "dist/index.d.ts",
   "bin": "dist/index.js",
